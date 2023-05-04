@@ -4068,20 +4068,34 @@
  * WiFi Support (Espressif ESP32 WiFi)
  */
 //#define WIFISUPPORT         // Marlin embedded WiFi management
-//#define ESP3D_WIFISUPPORT   // ESP3D Library WiFi management (https://github.com/luc-github/ESP3DLib)
+#define ESP3D_WIFISUPPORT   // ESP3D Library WiFi management (https://github.com/luc-github/ESP3DLib)
 
 #if EITHER(WIFISUPPORT, ESP3D_WIFISUPPORT)
-  //#define WEBSUPPORT          // Start a webserver (which may include auto-discovery)
-  //#define OTASUPPORT          // Support over-the-air firmware updates
-  //#define WIFI_CUSTOM_COMMAND // Accept feature config commands (e.g., WiFi ESP3D) from the host
+  #define WEBSUPPORT          // Start a webserver (which may include auto-discovery)
+  #define OTASUPPORT          // Support over-the-air firmware updates
+  #define WIFI_CUSTOM_COMMAND // Accept feature config commands (e.g., WiFi ESP3D) from the host
+  
+  //AUTHENTICATION_FEATURE: protect pages by login password.
+#define AUTHENTICATION_FEATURE
+
+//MDNS_FEATURE: this feature allow  type the name defined
+//in web browser by default: http:\\marlinesp.local and connect
+#define DISABLE_MDNS_FEATURE
+
+//SSDD_FEATURE: this feature is a discovery protocol, supported on Windows out of the box
+//Rely on Configuration_adv.h
+#define DISABLE_SSDP_FEATURE
+
+//CAPTIVE_PORTAL_FEATURE: In SoftAP redirect all unknow call to main page
+#define DISABLE_CAPTIVE_PORTAL_FEATURE
 
   /**
    * To set a default WiFi SSID / Password, create a file called Configuration_Secure.h with
    * the following defines, customized for your network. This specific file is excluded via
    * .gitignore to prevent it from accidentally leaking to the public.
    *
-   *   #define WIFI_SSID "WiFi SSID"
-   *   #define WIFI_PWD  "WiFi Password"
+   *   #define WIFI_SSID "Saint 2.4"
+   *   #define WIFI_PWD  "Noah_1414)"
    */
   //#include "Configuration_Secure.h" // External file with WiFi SSID / Password
 #endif
